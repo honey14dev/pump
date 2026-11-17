@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PUMP.BOYZ Introduction</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="hero hero-side">
+        <div class="hero-copy">
+          <p class="eyebrow">PUMP.BOYZ PRODUCTION</p>
+          <h1>BE PART OF THE MOTION</h1>
+          <h3 class="subcopy">
+            ELEVATING NIGHT LIFE IN OUR CITY!
+          </h3>
+        </div>
+        <div
+          class="disc-wheel brand-logo-side"
+          data-disc-wheel
+          role="button"
+          tabindex="0"
+          aria-label="Interactive Pump Boyz disc"
+        >
+          <img
+            src="04AC3406-98D2-4B26-B905-48922F0EB1BA_1_105_c.jpeg"
+            alt="PUMP.BOYZ PRODUCTION logo"
+            class="disc-art"
+            draggable="false"
+          />
+          <span class="disc-center" aria-hidden="true"></span>
+        </div>
+      </section>
+
+      <section class="form-card events-card" id="upcomingEvents" aria-label="Upcoming events">
+        <div class="featured-events">
+          <p class="featured-kicker">Featured</p>
+          <h3 class="featured-title">Upcoming Events</h3>
+          <div class="event-list" id="eventList">
+            <article class="event-item">
+              <p class="event-name">Loading upcoming events...</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-card intro-card" id="aboutPumpBoyz" aria-label="About Pump.Boyz">
+        <h2>About Pump.Boyz</h2>
+        <div class="intro-grid">
+          <p>
+            We curate party nights built around top DJs, crowd-first production, and a stylish atmosphere.
+          </p>
+          <p>
+            Whether you book admission, tables, or VIP couch experiences, the goal is always the same: <b>UNFORGETTABLE NIGHTS.</b>
+          </p>
+        </div>
+
+        <ul class="intro-points">
+          <li>Curated music and live crowd energy</li>
+          <li>Flexible packages from entry tickets to VIP couch setups</li>
+          <li>Fast booking through our reservation form</li>
+        </ul>
+      </section>
+
+      <div class="reservation-cta" aria-label="Reservation link">
+        <a class="submit-btn action-btn" id="reserveNowLink" href="reservation.html">Reserve Now</a>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
