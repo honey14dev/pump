@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PUMP.BOYZ Reservation Form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="hero hero-side">
+        <div class="hero-copy">
+          <p class="eyebrow">Night Session</p>
+          <h1>Reservation Form</h1>
+          <p class="subcopy">
+            PUMP.BOYZ PRODUCTION reservation list. Fill in the required details to secure your slot.
+          </p>
+        </div>
+        <div
+          class="disc-wheel brand-logo-side"
+          data-disc-wheel
+          role="button"
+          tabindex="0"
+          aria-label="Interactive Pump Boyz disc"
+        >
+          <img
+            src="04AC3406-98D2-4B26-B905-48922F0EB1BA_1_105_c.jpeg"
+            alt="PUMP.BOYZ PRODUCTION logo"
+            class="disc-art"
+            draggable="false"
+          />
+          <span class="disc-center" aria-hidden="true"></span>
+        </div>
+      </section>
+
+      <section class="form-card" aria-label="Party reservation form">
+        <form id="reservationForm" novalidate>
+          <label class="field is-hidden" id="reservationEventField">
+            <span>Event to Reserve *</span>
+            <select id="reservationEvent" name="reservationEvent">
+              <option value="">Select event</option>
+            </select>
+          </label>
+
+          <div class="field-grid single-col">
+            <label class="field">
+              <span>Full Name *</span>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                placeholder="Name"
+                required
+              />
+            </label>
+
+            <label class="field">
+              <span>Instagram username *</span>
+              <input
+                type="text"
+                id="instagramUsername"
+                name="instagramUsername"
+                placeholder="@"
+                required
+              />
+            </label>
+          </div>
+
+          <fieldset class="tiers">
+            <legend>Type of Purchase *</legend>
+            <div id="ticketTierOptions">
+              <p class="event-meta">Loading purchase options...</p>
+            </div>
+          </fieldset>
+
+          <div class="summary" id="tierSummary" role="status" aria-live="polite">
+            Selected purchase: <strong>Admission Fee (250php)</strong>.
+          </div>
+
+          <section class="payment-block" aria-label="Payment details">
+            <h2 class="payment-title">Payment</h2>
+            <p class="payment-note">Scan the QR and complete your payment before submitting your reservation.</p>
+
+            <img
+              src="qr.png"
+              alt="InstaPay QR code for payment"
+              class="payment-qr"
+            />
+
+            <label class="field">
+              <span>Insert Photo of Receipt *</span>
+              <input
+                type="file"
+                id="receiptPhoto"
+                name="receiptPhoto"
+                accept="image/*"
+                required
+              />
+            </label>
+          </section>
+
+          <button type="submit" class="submit-btn">Send Reservation</button>
+          <p class="fine-print">Please double-check your name and Instagram username before sending.</p>
+          <p class="result" id="resultMessage" aria-live="polite"></p>
+        </form>
+
+        <div class="action-row">
+          <a class="submit-btn action-btn" href="intro.html">Back to Introduction</a>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

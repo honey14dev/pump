@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PUMP.BOYZ Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="admin-page">
+    <main class="page-shell">
+      <section class="hero hero-side">
+        <div class="hero-copy">
+          <p class="eyebrow">PUMP.BOYZ PRODUCTION</p>
+          <h1>Admin Site</h1>
+          <p class="subcopy">Edit upcoming events, add notes and posters, and manage reservations.</p>
+          <div class="action-row">
+            <button type="button" class="submit-btn secondary-btn" id="refreshAdminBtn">Refresh Data</button>
+            <button type="button" class="submit-btn secondary-btn" id="exportDataBtn">Export Data</button>
+            <button type="button" class="submit-btn secondary-btn" id="importDataBtn">Import Data</button>
+            <input type="file" id="importDataFile" accept="application/json" class="is-hidden" />
+          </div>
+          <p class="event-meta" id="syncMessage" aria-live="polite"></p>
+        </div>
+        <div
+          class="disc-wheel brand-logo-side"
+          data-disc-wheel
+          role="button"
+          tabindex="0"
+          aria-label="Interactive Pump Boyz disc"
+        >
+          <img
+            src="04AC3406-98D2-4B26-B905-48922F0EB1BA_1_105_c.jpeg"
+            alt="PUMP.BOYZ PRODUCTION logo"
+            class="disc-art"
+            draggable="false"
+          />
+          <span class="disc-center" aria-hidden="true"></span>
+        </div>
+      </section>
+
+      <section class="form-card" aria-label="Upcoming events editor">
+        <h2 class="featured-title">Edit Upcoming Events</h2>
+        <p class="event-meta" id="eventEditStatus">Create a new event or click Edit on a specific event below.</p>
+        <form id="eventForm" class="admin-grid" novalidate>
+          <input type="hidden" id="eventId" name="eventId" />
+
+          <label class="field">
+            <span>Event Title *</span>
+            <input type="text" id="eventTitle" name="eventTitle" required />
+          </label>
+
+          <label class="field">
+            <span>Date *</span>
+            <input type="date" id="eventDate" name="eventDate" required />
+          </label>
+
+          <label class="field">
+            <span>Time *</span>
+            <input type="time" id="eventTime" name="eventTime" required />
+          </label>
+
+          <label class="field">
+            <span>Venue *</span>
+            <input type="text" id="eventVenue" name="eventVenue" required />
+          </label>
+
+          <label class="field full-span">
+            <span>Notes</span>
+            <textarea id="eventNote" name="eventNote" rows="3" placeholder="Special reminders or event notes"></textarea>
+          </label>
+
+          <label class="field full-span">
+            <span>Poster URL (optional)</span>
+            <input type="url" id="eventPosterUrl" name="eventPosterUrl" placeholder="https://..." />
+          </label>
+
+          <label class="field full-span">
+            <span>Or Upload Poster (optional)</span>
+            <input type="file" id="eventPosterFile" name="eventPosterFile" accept="image/*" />
+          </label>
+
+          <label class="field full-span">
+            <span>Floor Plan URL (optional)</span>
+            <input type="url" id="eventFloorPlanUrl" name="eventFloorPlanUrl" placeholder="https://..." />
+          </label>
+
+          <label class="field full-span">
+            <span>Or Upload Floor Plan (optional)</span>
+            <input type="file" id="eventFloorPlanFile" name="eventFloorPlanFile" accept="image/*" />
+          </label>
+
+          <img id="eventPosterPreview" class="event-poster preview-hidden" alt="Poster preview" />
+          <img id="eventFloorPlanPreview" class="event-poster preview-hidden" alt="Floor plan preview" />
+
+          <div class="action-row full-span">
+            <button type="submit" class="submit-btn" id="eventSubmitBtn">Save Event</button>
+            <button type="button" class="submit-btn secondary-btn" id="eventCancelEditBtn">Cancel Edit</button>
+            <button type="button" class="submit-btn secondary-btn" id="eventResetBtn">Reset</button>
+          </div>
+          <p class="result full-span" id="eventResult" aria-live="polite"></p>
+        </form>
+
+        <div class="admin-list" id="adminEventList" aria-live="polite"></div>
+      </section>
+
+      <section class="form-card" aria-label="Reservation inbox">
+        <h2 class="featured-title">Edit Type of Purchase</h2>
+        <form id="purchaseOptionForm" class="admin-grid" novalidate>
+          <input type="hidden" id="purchaseOptionId" name="purchaseOptionId" />
+
+          <label class="field">
+            <span>Event *</span>
+            <select id="purchaseOptionEventId" name="purchaseOptionEventId" required>
+              <option value="">Select event</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Option Name *</span>
+            <input type="text" id="purchaseOptionName" name="purchaseOptionName" required />
+          </label>
+
+          <label class="field">
+            <span>Description</span>
+            <input type="text" id="purchaseOptionDetail" name="purchaseOptionDetail" placeholder="Optional detail shown under option" />
+          </label>
+
+          <div class="action-row full-span">
+            <button type="submit" class="submit-btn">Save Option</button>
+            <button type="button" class="submit-btn secondary-btn" id="purchaseOptionResetBtn">Reset</button>
+          </div>
+          <p class="result full-span" id="purchaseOptionResult" aria-live="polite"></p>
+        </form>
+
+        <div class="admin-list" id="purchaseOptionList" aria-live="polite"></div>
+      </section>
+
+      <section class="form-card" aria-label="Reservation inbox">
+        <h2 class="featured-title">Reservation Inbox</h2>
+        <div class="admin-list" id="reservationInbox" aria-live="polite"></div>
+      </section>
+
+      <div class="reservation-cta" aria-label="Navigation links">
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="script.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>
